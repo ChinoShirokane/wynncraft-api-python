@@ -50,7 +50,32 @@ if choice == "2":
         f"https://api.wynncraft.com/v3/player/{choiceUser}",
         headers={"Authorization": f"Bearer {API_KEY}"}
     )
-    print(response.json())
+    with open("data3.json", "w") as f:
+        print(response.json(), file=f)
+    with open("data3.json", "r") as f:
+        data = ast.literal_eval(f.read())
+    with open("data3.json", "w") as f:
+        json.dump(data, f, indent=2)
+    with open("data3.json", "r") as f:
+        data = json.load(f)
+    print (f"Online: {data["online"]}")
+    print (f"Last seen: {data["server"]}")
+    response = requests.get(
+        f"https://api.wynncraft.com/v3/player/{choiceUser}/characters",
+        headers={"Authorization": f"Bearer {API_KEY}"}
+    )
+    with open("data.json", "w") as f:
+        print(response.json(), file=f)
+    with open("data.json", "r") as f:
+        dataUser = ast.literal_eval(f.read())
+    with open("data.json", "w") as f:
+        json.dump(dataUser, f, indent=2)
+    for uuid, player in dataUser.items():
+        if (uuid == data["activeCharacter"]):
+            print (f'Active class: {player["type"]}')
+    print (f"UUID: {data["uuid"]}")
+    print (f"Rank: {data["rank"]}")
+    print (f"Support rank: {data["supportRank"]}")
 
 if choice == "3":
     choiceUser = input("Please enter an username: ")
