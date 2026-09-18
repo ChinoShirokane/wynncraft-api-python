@@ -93,8 +93,6 @@ if choice == "2":
 
     print (f'World events completed: {globData["worldEvents"]}') #this and the lootrun counter is just wrong somehow (either that or im tripping), blame wynncraft 
     print (f'Lootruns completed: {globData["lootruns"]}')
-    print (f'World events completed: {globData["worldEvents"]}')
-
 
     guilds = data["guild"]
     print (f'Guild name: {guilds["name"]}')
