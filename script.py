@@ -73,9 +73,70 @@ if choice == "2":
     for uuid, player in dataUser.items():
         if (uuid == data["activeCharacter"]):
             print (f'Active class: {player["type"]}')
+
     print (f"UUID: {data["uuid"]}")
     print (f"Rank: {data["rank"]}")
     print (f"Support rank: {data["supportRank"]}")
+    print (f"Last joined: {data["lastJoin"]}")
+    print (f"Veteran: {data["veteran"]}")
+    print (f"Playtime (hours): {data["playtime"]}")
+
+    globData = data["globalData"]
+    print (f'Content completion: {globData["contentCompletion"]}')
+    print (f'Wars: {globData["wars"]}')
+    print (f'Total level: {globData["totalLevel"]}')
+    print (f'Mobs killed: {globData["mobsKilled"]}')
+    print (f'Chests found: {globData["chestsFound"]}')
+
+    dungeon = globData["dungeons"]
+    print (f'Dungeons: {dungeon["total"]}')
+
+    print (f'World events completed: {globData["worldEvents"]}') #this and the lootrun counter is just wrong somehow (either that or im tripping), blame wynncraft 
+    print (f'Lootruns completed: {globData["lootruns"]}')
+    print (f'World events completed: {globData["worldEvents"]}')
+
+
+    guilds = data["guild"]
+    print (f'Guild name: {guilds["name"]}')
+    print (f'Guild prefix: {guilds["prefix"]}')
+    print (f'Guild rank: {guilds["rank"]}')
+
+    print ("\n")
+    raid = globData["raids"]
+    print (f'Raids completed: {raid["total"]}')
+    raidInfo = raid["list"]
+    print (f'TCC: {raidInfo["The Canyon Colossus"]}')
+    print (f'NOL: {raidInfo["Orphion's Nexus of Light"]}')
+    print (f'TNA: {raidInfo["The Nameless Anomaly"]}')
+    print (f'NOTG: {raidInfo["Nest of the Grootslangs"]}')
+    print (f'TWP: {raidInfo["Nest of the Grootslangs"]}')
+
+    graid = globData["guildRaids"]
+    print (f'Guild raids completed: {graid["total"]}')
+    graidInfo = graid["list"]
+    print (f'GTCC: {graidInfo["The Canyon Colossus"]}')
+    print (f'GNOL: {graidInfo["Orphion's Nexus of Light"]}')
+    print (f'GTNA: {graidInfo["The Nameless Anomaly"]}')
+    print (f'GNOTG: {graidInfo["Nest of the Grootslangs"]}')
+    print (f'GTWP: {graidInfo["Nest of the Grootslangs"]}')
+
+    print ("\n")
+    ranks = data["ranking"]
+    print (f'NOL graid rating: {ranks["orphionSrGPlayers"]}')
+    print (f'NOL raid rating: {ranks["orphionSrPlayers"]}')
+    print (f'NOL completion: {ranks["orphionCompletion"]}')
+    print (f'NOTG graid rating: {ranks["grootslangSrGPlayers"]}')
+    print (f'NOTG raid rating: {ranks["grootslangSrPlayers"]}')
+    print (f'NOTG completion: {ranks["grootslangCompletion"]}')
+    print (f'TNA graid rating: {ranks["namelessSrGPlayers"]}')
+    print (f'TNA raid rating: {ranks["namelessSrPlayers"]}')
+    print (f'TNA completion: {ranks["namelessCompletion"]}')
+    print (f'TCC graid rating: {ranks["colossusSrGPlayers"]}')
+    print (f'TCC raid rating: {ranks["colossusSrPlayers"]}')
+    print (f'TCC completion: {ranks["colossusCompletion"]}')
+    print (f'TWP graid rating: {ranks["frumaSrGPlayers"]}')
+    print (f'TWP raid rating: {ranks["frumaSrPlayers"]}')
+    print (f'TWP completion: {ranks["frumaCompletion"]}')
 
 if choice == "3":
     choiceUser = input("Please enter an username: ")
