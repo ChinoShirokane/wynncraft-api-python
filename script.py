@@ -15,13 +15,13 @@ if choice == "1":
             "https://api.wynncraft.com/v3/player",
             headers={"Authorization": f"Bearer {API_KEY}"}
         )
-        with open("data1.json", "w") as f:
+        with open("dataOnlinePlayers.json", "w") as f:
             print(response.json(), file=f)
-        with open("data1.json", "r") as f:
+        with open("dataOnlinePlayers.json", "r") as f:
             data = ast.literal_eval(f.read())
-        with open("data1.json", "w") as f:
+        with open("dataOnlinePlayers.json", "w") as f:
             json.dump(data, f, indent=2)
-        with open("data1.json", "r") as f:
+        with open("dataOnlinePlayers.json", "r") as f:
             data = json.load(f)
         print (f"Total online players: {data["total"]}")
         for username, server in data["players"].items():
@@ -32,13 +32,13 @@ if choice == "1":
             f"https://api.wynncraft.com/v3/player?server={choiceServer}",
             headers={"Authorization": f"Bearer {API_KEY}"}
         )
-        with open("data2.json", "w") as f:
+        with open("dataOnlinePlayersWorld.json", "w") as f:
             print(response.json(), file=f)
-        with open("data2.json", "r") as f:
+        with open("dataOnlinePlayersWorld.json", "r") as f:
             data = ast.literal_eval(f.read())
-        with open("data2.json", "w") as f:
+        with open("dataOnlinePlayersWorld.json", "w") as f:
             json.dump(data, f, indent=2)
-        with open("data2.json", "r") as f:
+        with open("dataOnlinePlayersWorld.json", "r") as f:
             data = json.load(f)
         for username, server in data["players"].items():
             print (f"Username: {username}")
@@ -50,13 +50,13 @@ if choice == "2":
         f"https://api.wynncraft.com/v3/player/{choiceUser}",
         headers={"Authorization": f"Bearer {API_KEY}"}
     )
-    with open("data3.json", "w") as f:
+    with open("dataPlayerProfile.json", "w") as f:
         print(response.json(), file=f)
-    with open("data3.json", "r") as f:
+    with open("dataPlayerProfile.json", "r") as f:
         data = ast.literal_eval(f.read())
-    with open("data3.json", "w") as f:
+    with open("dataPlayerProfile.json", "w") as f:
         json.dump(data, f, indent=2)
-    with open("data3.json", "r") as f:
+    with open("dataPlayerProfile.json", "r") as f:
         data = json.load(f)
     print (f"Online: {data["online"]}")
     print (f"Last seen: {data["server"]}")
@@ -64,11 +64,11 @@ if choice == "2":
         f"https://api.wynncraft.com/v3/player/{choiceUser}/characters",
         headers={"Authorization": f"Bearer {API_KEY}"}
     )
-    with open("data.json", "w") as f:
+    with open("dataPlayerCharacter.json", "w") as f:
         print(response.json(), file=f)
-    with open("data.json", "r") as f:
+    with open("dataPlayerCharacter.json", "r") as f:
         dataUser = ast.literal_eval(f.read())
-    with open("data.json", "w") as f:
+    with open("dataPlayerCharacter.json", "w") as f:
         json.dump(dataUser, f, indent=2)
     for uuid, player in dataUser.items():
         if (uuid == data["activeCharacter"]):
@@ -142,7 +142,14 @@ if choice == "3":
         f"https://api.wynncraft.com/v3/player/{choiceUser}/characters",
         headers={"Authorization": f"Bearer {API_KEY}"}
     )
-    print(response.json())
+    with open("dataCharacterList.json", "w") as f:
+        print(response.json(), file=f)
+    with open("dataCharacterList.json", "r") as f:
+        dataPlayer = ast.literal_eval(f.read())
+    with open("dataCharacterList.json", "w") as f:
+        json.dump(dataPlayer, f, indent=2)
+    for uuid, player in dataPlayer.items():
+        print(f"Class: {player["type"]}, UUID: {uuid}")
 
 if choice == "4":
     choiceUser = input("Please enter an username: ")
@@ -150,21 +157,55 @@ if choice == "4":
         f"https://api.wynncraft.com/v3/player/{choiceUser}/characters",
         headers={"Authorization": f"Bearer {API_KEY}"}
     )
-    with open("data.json", "w") as f:
+    with open("dataCharacterList.json", "w") as f:
         print(response.json(), file=f)
-    with open("data.json", "r") as f:
-        data = ast.literal_eval(f.read())
-    with open("data.json", "w") as f:
-        json.dump(data, f, indent=2)
-    for uuid, player in data.items():
+    with open("dataCharacterList.json", "r") as f:
+        dataPlayer = ast.literal_eval(f.read())
+    with open("dataCharacterList.json", "w") as f:
+        json.dump(dataPlayer, f, indent=2)
+    for uuid, player in dataPlayer.items():
         print(f"Class: {player["type"]}, UUID: {uuid}")
     choiceClass = input("Enter the UUID of the class you want to see: ")
     response = requests.get(
         f"https://api.wynncraft.com/v3/player/{choiceUser}/characters/{choiceClass}",
         headers={"Authorization": f"Bearer {API_KEY}"}
     )
-    print(response.json())
+    with open("dataCharacterDetails.json", "w") as f:
+        print(response.json(), file=f)
+    with open("dataCharacterDetails.json", "r") as f:
+        dataCharacter = ast.literal_eval(f.read())
+    with open("dataCharacterDetails.json", "w") as f:
+        json.dump(dataCharacter, f, indent=2)
+    
+    print (f'Type: {dataCharacter["type"]}')
+    print (f'Nickname: {dataCharacter["nickname"]}')
+    print (f'Level: {dataCharacter["level"]}')
+    print (f'XP: {dataCharacter["xp"]}')
+    print (f'Total level: {dataCharacter["totalLevel"]}')
+    print (f'Gamemode: {dataCharacter["gamemode"]}')
+    print (f'Content completion: {dataCharacter["contentCompletion"]}')
+    print (f'Wars: {dataCharacter["wars"]}')
+    print (f'Playtime: {dataCharacter["playtime"]}')
+    print (f'Mobs killed: {dataCharacter["mobsKilled"]}')
+    print (f'Chests found: {dataCharacter["chestsFound"]}')
+    print (f'Items identified: {dataCharacter["itemsIdentified"]}') #i do not know why this thing stays 0 every single time, blame wynncraft again
+    print (f'Blocks walked: {dataCharacter["blocksWalked"]}') #i give up
+    print (f'Logins: {dataCharacter["logins"]}')
+    print (f'Deaths: {dataCharacter["deaths"]}')
+    print (f'Discoveries: {dataCharacter["discoveries"]}')
 
+    pvp = dataCharacter["pvp"]
+    print (f'PVP kills: {pvp["kills"]}')
+    print (f'PVP deaths: {pvp["deaths"]}')
+
+    print ("\n")
+    sp = dataCharacter["skillPoints"]
+    print (f'Strength: {sp["strength"]}')
+    print (f'Dexterity: {sp["dexterity"]}')
+    print (f'Intelligence: {sp["intelligence"]}')
+    print (f'Defense: {sp["defense"]}')
+    print (f'Agility: {sp["agility"]}')
+    
 if choice == "5":
     choiceUser = input("Please enter an username: ")
     response = requests.get(
