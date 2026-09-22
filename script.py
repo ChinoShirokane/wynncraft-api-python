@@ -107,7 +107,7 @@ if choice == "2":
     print (f'NOL: {raidInfo["Orphion's Nexus of Light"]}')
     print (f'TNA: {raidInfo["The Nameless Anomaly"]}')
     print (f'NOTG: {raidInfo["Nest of the Grootslangs"]}')
-    print (f'TWP: {raidInfo["Nest of the Grootslangs"]}')
+    print (f'WTP: {raidInfo["Nest of the Grootslangs"]}')
 
     graid = globData["guildRaids"]
     print (f'Guild raids completed: {graid["total"]}')
@@ -116,26 +116,26 @@ if choice == "2":
     print (f'GNOL: {graidInfo["Orphion's Nexus of Light"]}')
     print (f'GTNA: {graidInfo["The Nameless Anomaly"]}')
     print (f'GNOTG: {graidInfo["Nest of the Grootslangs"]}')
-    print (f'GTWP: {graidInfo["Nest of the Grootslangs"]}')
+    print (f'GWTP: {graidInfo["Nest of the Grootslangs"]}')
 
     print ("\n")
-#    ranks = data["ranking"]
-#    print (f'NOL graid rating: {ranks["orphionSrGPlayers"]}')
-#    print (f'NOL raid rating: {ranks["orphionSrPlayers"]}')
-#    print (f'NOL completion: {ranks["orphionCompletion"]}')
-#    print (f'NOTG graid rating: {ranks["grootslangSrGPlayers"]}')
-#    print (f'NOTG raid rating: {ranks["grootslangSrPlayers"]}')
-#    print (f'NOTG completion: {ranks["grootslangCompletion"]}')
-#    print (f'TNA graid rating: {ranks["namelessSrGPlayers"]}')
-#    print (f'TNA raid rating: {ranks["namelessSrPlayers"]}')
-#    print (f'TNA completion: {ranks["namelessCompletion"]}')
-#    print (f'TCC graid rating: {ranks["colossusSrGPlayers"]}')
-#    print (f'TCC raid rating: {ranks["colossusSrPlayers"]}')
-#    print (f'TCC completion: {ranks["colossusCompletion"]}')
-#    print (f'TWP graid rating: {ranks["frumaSrGPlayers"]}')
-#    print (f'TWP raid rating: {ranks["frumaSrPlayers"]}')
-#    print (f'TWP completion: {ranks["frumaCompletion"]}')
-#will fix later
+    ranks = data.get("ranking", {})
+    print (f'NOL graid ranking: {ranks.get("orphionSrGPlayers", 0)}')
+    print (f'NOL raid ranking: {ranks.get("orphionSrPlayers", 0)}')
+    print (f'NOL completion ranking: {ranks.get("orphionCompletion", 0)}')
+    print (f'NOTG graid ranking: {ranks.get("grootslangSrGPlayers", 0)}')
+    print (f'NOTG raid ranking: {ranks.get("grootslangSrPlayers", 0)}')
+    print (f'NOTG completion ranking: {ranks.get("grootslangCompletion", 0)}')
+    print (f'TNA graid ranking: {ranks.get("namelessSrGPlayers", 0)}')
+    print (f'TNA raid ranking: {ranks.get("namelessSrPlayers", 0)}')
+    print (f'TNA completion ranking: {ranks.get("namelessCompletion", 0)}')
+    print (f'TCC graid ranking: {ranks.get("colossusSrGPlayers", 0)}')
+    print (f'TCC raid ranking: {ranks.get("colossusSrPlayers", 0)}')
+    print (f'TCC completion ranking: {ranks.get("colossusCompletion", 0)}')
+    print (f'WTP graid ranking: {ranks.get("frumaSrGPlayers", 0)}')
+    print (f'WTP raid ranking: {ranks.get("frumaSrPlayers", 0)}')
+    print (f'WTP completion ranking: {ranks.get("frumaCompletion", 0)}')
+
 if choice == "3":
     choiceUser = input("Please enter an username: ")
     response = requests.get(
