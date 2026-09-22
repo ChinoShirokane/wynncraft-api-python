@@ -3,11 +3,11 @@ import ast
 import json
 import os
 
-choice = input("Please enter a number based on what you want to do: \n1. List online players \n2. Get player profile \n3. List a player's characters \n4. Get a character's data \n5. Get a character's ability tree \n6. Exit \n")
 API_KEY = os.environ.get("API_KEY")
 if not API_KEY:
     raise RuntimeError("API_KEY environment variable is not set. Please set it before running this script by using export API_KEY = 'your API key here'.")   
 
+choice = input("Please enter a number based on what you want to do: \n1. List online players \n2. Get player profile \n3. List a player's characters \n4. Get a character's data \n5. Get a character's ability tree \n6. Exit \n")
 if choice == "1":
     choice1 = input("Would you like to see online players in a specific world? (y/n): ")
     if choice1 == "n":
@@ -199,12 +199,9 @@ if choice == "4":
     print (f'PVP deaths: {pvp["deaths"]}')
 
     print ("\n")
-    sp = dataCharacter["skillPoints"]
-    print (f'Strength: {sp["strength"]}')
-    print (f'Dexterity: {sp["dexterity"]}')
-    print (f'Intelligence: {sp["intelligence"]}')
-    print (f'Defense: {sp["defense"]}')
-    print (f'Agility: {sp["agility"]}')
+    sp = dataCharacter.get("skillPoints", {})
+    for stat in ("strength", "dexterity", "intelligence", "defense", "agility"):
+        print (f"{stat.capitalize()}: {sp.get(stat, 0)}")
     
 if choice == "5":
     choiceUser = input("Please enter an username: ")
