@@ -119,23 +119,23 @@ if choice == "2":
     print (f'GTWP: {graidInfo["Nest of the Grootslangs"]}')
 
     print ("\n")
-    ranks = data["ranking"]
-    print (f'NOL graid rating: {ranks["orphionSrGPlayers"]}')
-    print (f'NOL raid rating: {ranks["orphionSrPlayers"]}')
-    print (f'NOL completion: {ranks["orphionCompletion"]}')
-    print (f'NOTG graid rating: {ranks["grootslangSrGPlayers"]}')
-    print (f'NOTG raid rating: {ranks["grootslangSrPlayers"]}')
-    print (f'NOTG completion: {ranks["grootslangCompletion"]}')
-    print (f'TNA graid rating: {ranks["namelessSrGPlayers"]}')
-    print (f'TNA raid rating: {ranks["namelessSrPlayers"]}')
-    print (f'TNA completion: {ranks["namelessCompletion"]}')
-    print (f'TCC graid rating: {ranks["colossusSrGPlayers"]}')
-    print (f'TCC raid rating: {ranks["colossusSrPlayers"]}')
-    print (f'TCC completion: {ranks["colossusCompletion"]}')
-    print (f'TWP graid rating: {ranks["frumaSrGPlayers"]}')
-    print (f'TWP raid rating: {ranks["frumaSrPlayers"]}')
-    print (f'TWP completion: {ranks["frumaCompletion"]}')
-
+#    ranks = data["ranking"]
+#    print (f'NOL graid rating: {ranks["orphionSrGPlayers"]}')
+#    print (f'NOL raid rating: {ranks["orphionSrPlayers"]}')
+#    print (f'NOL completion: {ranks["orphionCompletion"]}')
+#    print (f'NOTG graid rating: {ranks["grootslangSrGPlayers"]}')
+#    print (f'NOTG raid rating: {ranks["grootslangSrPlayers"]}')
+#    print (f'NOTG completion: {ranks["grootslangCompletion"]}')
+#    print (f'TNA graid rating: {ranks["namelessSrGPlayers"]}')
+#    print (f'TNA raid rating: {ranks["namelessSrPlayers"]}')
+#    print (f'TNA completion: {ranks["namelessCompletion"]}')
+#    print (f'TCC graid rating: {ranks["colossusSrGPlayers"]}')
+#    print (f'TCC raid rating: {ranks["colossusSrPlayers"]}')
+#    print (f'TCC completion: {ranks["colossusCompletion"]}')
+#    print (f'TWP graid rating: {ranks["frumaSrGPlayers"]}')
+#    print (f'TWP raid rating: {ranks["frumaSrPlayers"]}')
+#    print (f'TWP completion: {ranks["frumaCompletion"]}')
+#will fix later
 if choice == "3":
     choiceUser = input("Please enter an username: ")
     response = requests.get(
@@ -203,6 +203,13 @@ if choice == "4":
     for stat in ("strength", "dexterity", "intelligence", "defense", "agility"):
         print (f"{stat.capitalize()}: {sp.get(stat, 0)}")
     
+    print ("\n")
+    raidChara = dataCharacter.get("raids", {})
+    print (f"Raids: {raidChara.get("total", 0)}")
+    raidCharaList = raidChara.get("list", {})
+    for raidList in ("The Canyon Colossus", "Orphion's Nexus of Light", "The Nameless Anomaly", "Nest of the Grootslangs", "The Wartorn Palace"):
+        print (f'{raidList}: {raidCharaList.get(raidList, 0)}')
+
 if choice == "5":
     choiceUser = input("Please enter an username: ")
     response = requests.get(
