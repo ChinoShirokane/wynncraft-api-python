@@ -211,25 +211,31 @@ if choice == "4":
         print (f'{raidList}: {raidCharaList.get(raidList, 0)}')
 
 if choice == "5":
-    choiceUser = input("Please enter an username: ")
-    response = requests.get(
-        f"https://api.wynncraft.com/v3/player/{choiceUser}/characters",
-        headers={"Authorization": f"Bearer {API_KEY}"}
-    )
-    with open("data.json", "w") as f:
-        print(response.json(), file=f)
-    with open("data.json", "r") as f:
-        data = ast.literal_eval(f.read())
-    with open("data.json", "w") as f:
-        json.dump(data, f, indent=2)
-    for uuid, player in data.items():
-        print(f"Class: {player["type"]}, UUID: {uuid}")
-    choiceClass = input("Enter the UUID of the class you want to see: ")
-    response = requests.get(
-        f"https://api.wynncraft.com/v3/player/{choiceUser}/characters/{choiceClass}/abilities",
-        headers={"Authorization": f"Bearer {API_KEY}"}
-    )
-    print(response.json())
-
+#    choiceUser = input("Please enter an username: ")
+#    response = requests.get(
+#        f"https://api.wynncraft.com/v3/player/{choiceUser}/characters",
+#        headers={"Authorization": f"Bearer {API_KEY}"}
+#    )
+#    with open("dataCharacterList.json", "w") as f:
+#        print(response.json(), file=f)
+#    with open("dataCharacterList.json", "r") as f:
+#        data = ast.literal_eval(f.read())
+#    with open("dataCharacterList.json", "w") as f:
+#        json.dump(data, f, indent=2)
+#    for uuid, player in data.items():
+#        print(f"Class: {player["type"]}, UUID: {uuid}")
+#    choiceClass = input("Enter the UUID of the class you want to see: ")
+#    response = requests.get(
+#        f"https://api.wynncraft.com/v3/player/{choiceUser}/characters/{choiceClass}/abilities",
+#        headers={"Authorization": f"Bearer {API_KEY}"}
+#    )
+#    with open("dataCharacterAbility.json", "w") as f:
+#        print(response.json(), file=f)
+#    with open("dataCharacterAbility.json", "r") as f:
+#        dataAbility = ast.literal_eval(f.read())
+#    with open("dataCharacterAbility.json", "w") as f:
+#        json.dump(dataAbility, f, indent=2)
+    print ("this is way out of my range rn, i'm finishing this small project here.")
+#i got scared by the json this thing gave me okay it's way too complicated
 if choice == "6":
     print("")
